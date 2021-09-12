@@ -69,16 +69,16 @@ services:
       # Database user (replace with yours)
       POSTGRES_USER: grafanadbuser
       POSTGRES_PASSWORD_FILE: /run/secrets/grafana-postgres-password
+    networks:
+      - grafana-network
+    secrets:
+      - grafana-postgres-password
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -h 127.0.0.1"]
       interval: 10s
       timeout: 5s
       retries: 3
       start_period: 60s
-    networks:
-      - grafana-network
-    secrets:
-      - grafana-postgres-password
     deploy:
       mode: replicated
       replicas: 1
