@@ -118,7 +118,7 @@ services:
   grafana:
     <<: *default-opts
     # Image tag (replace with yours)
-    image: grafana/grafana:9.0.6
+    image: grafana/grafana:9.3.2
     environment:
       GF_DATABASE_TYPE: postgres
       GF_DATABASE_HOST: postgres:5432
